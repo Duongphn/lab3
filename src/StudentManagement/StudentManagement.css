@@ -1,0 +1,242 @@
+/* Theme variables keyed off body[data-theme] (set by ThemeContext). */
+body[data-theme='light'] {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --border: #d8dde3;
+  --primary: #2563eb;
+  --primary-text: #ffffff;
+  --edit: #f59e0b;
+  --delete: #ef4444;
+  --row-alt: #f9fafb;
+}
+
+body[data-theme='dark'] {
+  --bg: #121417;
+  --surface: #1e2227;
+  --text: #e6e8eb;
+  --muted: #9aa3ad;
+  --border: #333a42;
+  --primary: #3b82f6;
+  --primary-text: #ffffff;
+  --edit: #d97706;
+  --delete: #dc2626;
+  --row-alt: #252a30;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.student-management {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.sm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.sm-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  /* Follow our own theme toggle: black on light, white on dark. */
+  color: var(--text);
+}
+
+/* Buttons */
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: filter 0.15s ease;
+}
+
+.btn:hover {
+  filter: brightness(0.95);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-text);
+  border-color: var(--primary);
+}
+
+.btn-edit {
+  background: var(--edit);
+  color: #fff;
+  border-color: var(--edit);
+}
+
+.btn-delete {
+  background: var(--delete);
+  color: #fff;
+  border-color: var(--delete);
+}
+
+/* Form */
+.student-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.student-form h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.form-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 160px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.form-row input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.form-error {
+  color: var(--delete);
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* Controls */
+.sm-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.search-input,
+.major-filter {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: normal;
+  vertical-align: middle;
+}
+
+/* Normalize the native select so the control (and the menu that opens
+   from it) sit flush with the search box instead of looking offset. */
+.major-filter {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.student-count {
+  font-weight: 600;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+/* Table */
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.student-table th,
+.student-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+}
+
+.student-table thead th {
+  background: var(--row-alt);
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.student-table tbody tr:nth-child(even) {
+  background: var(--row-alt);
+}
+
+.student-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.id-cell {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.action-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 24px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
